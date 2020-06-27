@@ -11,10 +11,6 @@ import model.Produto;
 
 public class MenuControl {
 
-	public static void main(String[] args) {
-	
-	}
-
 	private static final String URL = "jdbc:sqlite:C:\\Users\\3green\\eclipse-workspace\\Teceletro\\bd\\banco.db";
 	private Connection con;
 
