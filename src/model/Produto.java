@@ -29,7 +29,7 @@ public class Produto implements Comparable<Produto> {
 		this.marca = marca;
 	}
 
-	public double getValor() {
+	public int getValor() {
 		return valor;
 	}
 
@@ -37,14 +37,14 @@ public class Produto implements Comparable<Produto> {
 
 	public String nome;
 	private String marca;
-	private double valor;
+	private int valor;
 
 	
 	public int compareTo(Produto p) {
 		return getNome().compareTo(p.getNome());
 	}
 
-	public void setValor(double parseDouble) {
+	public void setValor(int valor) {
 		this.valor = valor;
 		
 	}

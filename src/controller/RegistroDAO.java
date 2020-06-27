@@ -11,7 +11,7 @@ import model.Registromodel;
 
 
 public class RegistroDAO {
-	private static final String URL = "jdbc:sqlite:C:\\Users\\3green\\eclipse-workspace\\Teceletro\\db\\banco.db";
+	private static final String URL = "jdbc:sqlite:C:\\Users\\3green\\eclipse-workspace\\Teceletro\\bd\\banco.db";
     private Connection con;
     
 	public RegistroDAO() { 
@@ -47,18 +47,19 @@ public class RegistroDAO {
 			alertError("Erro de database", "Erro ao acessar o banco de dados", e.getMessage());
 		}
 	}
-	public Registromodel login(String nome ,String  senha) { 
+	public Registromodel login(Registromodel c) { 
 		try {
 			Connection con = DriverManager.getConnection(URL);
 			String sql = "SELECT * FROM Registro WHERE nome like ? and senha like ?";
 			PreparedStatement stm = con.prepareStatement(sql);
-			stm.setString(1, "%" + nome + "%");
-			stm.setString(2, "%" + senha + "%");
+			stm.setString(1, c.getNome());
+			stm.setString(2, c.getSenha());
 			ResultSet rs = stm.executeQuery();
 			if (rs.next()) { 
 				Registromodel r = new Registromodel();
 				r.setNome(rs.getString("nome"));
 				r.setSenha(rs.getString("senha"));
+				r.setCodigoreg(rs.getInt("codigoreg"));
 				return r;
 			}
 		

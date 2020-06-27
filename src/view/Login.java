@@ -94,10 +94,10 @@ public class Login extends Application implements EventHandler<ActionEvent> {
 			control.registrar(r);
 			entityToBoundary(new Registromodel());
 		} else if (e.getTarget() == btnLogin){ 
-			String nome = txtNome.getText();
-			String senha = txtSenha.getText();
-			Registromodel r = control.login(nome, senha);
-			entityToBoundary(r);
+			Registromodel r = boundaryToEntity();
+			Registromodel rm = control.login(r);
+			//if (rm.getCodigoreg() == )
+			System.out.print(rm.getEmail());
 			
 		}
 	}

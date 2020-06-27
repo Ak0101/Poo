@@ -79,14 +79,7 @@ public class Menu extends Application implements EventHandler<ActionEvent> {
 
 		
 		btnAtualizar.relocate(375, 370);
-		btnAtualizar.setOnAction((a) -> {
-			Atualizar at = new Atualizar();
-			try {
-				at.start(stage);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
+		
 
 		btnSalvar.setOnAction(this);
 		btnPesquisar.setOnAction(this);
@@ -116,6 +109,10 @@ public class Menu extends Application implements EventHandler<ActionEvent> {
 			String nome = txtNome.getText();
 			Produto p = control.deletarPorNome(nome);
 			entityToBoundary(p);
+		}else if (e.getTarget() == btnAtualizar) {
+			Produto p = boundaryToEntity();
+			control.atualizar(p);
+			entityToBoundary(new Produto());
 		}
 	}
 
@@ -133,7 +130,7 @@ public class Menu extends Application implements EventHandler<ActionEvent> {
 			p.setCodigopro( Long.parseLong(txtCodigopro.getText()) );
 			p.setNome( txtNome.getText() );
 			p.setMarca( txtMarca.getText() );
-			p.setValor(Double.parseDouble(txtValor.getText()) );
+			p.setValor(Integer.parseInt(txtValor.getText()) );
 			
 		} catch (Exception ex) { 
 			System.out.println("Erro ao computar os dados");
